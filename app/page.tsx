@@ -683,7 +683,7 @@ export default function Home() {
 
       {selected && (
         <PlayerModal player={selected} players={state.players} onClose={()=>setSelectedPlayerId(null)}
-          onUpdate={patch=>updatePlayer(selected.id, patch)}
+          onUpdate={(patch: Partial<Player>)=>updatePlayer(selected.id, patch)}
           onSetHost={(value:boolean)=>setHost(selected.id,value)}
           onDelete={()=>deletePlayer(selected.id)}
           onAssignRandom={assignRandomMission}
