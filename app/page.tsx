@@ -230,13 +230,14 @@ export default function Home() {
 
   function missionFailed(player: Player) {
     if (!player.currentMission) return;
+    const missionId = player.currentMission.missionId;
     setState(s => addLog({
       ...s,
       players: s.players.map(p => p.id === player.id ? {
         ...p, currentMission: { ...p.currentMission!, status:"cancelled" }
       } : p)
-    }, `${player.name} misija ${player.currentMission.missionId} atšaukta vedėjo.`));
-    showToast(`${player.currentMission.missionId} pažymėta kaip ATŠAUKTA.`);
+    }, `${player.name} misija ${missionId} atšaukta vedėjo.`));
+    showToast(`${missionId} pažymėta kaip ATŠAUKTA.`);
   }
 
   function makeChaos(player: Player) {
